@@ -22,10 +22,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Fonts load without blocking first paint; system Devanagari fonts show until they arrive -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@600;700;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600&family=Noto+Serif+Devanagari:wght@600;700;800&display=swap"></noscript>
+  <!-- Only the heading font is downloaded, without blocking first paint; body text uses the device's built-in Devanagari font -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@600;700;800&display=swap"></noscript>
   <link rel="preload" as="image" type="image/webp" imagesrcset="assets/kalika-devi-480w.webp 480w, assets/kalika-devi-640w.webp 640w, assets/kalika-devi-800w.webp 800w, assets/kalika-devi.webp 1024w" imagesizes="(max-width: 860px) 100vw, 500px" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script src="data.js" defer></script>

@@ -4,7 +4,7 @@
   --gold:#d6b268;--gold-200:#f3dfae;--gold-100:#fbefd2;--gold-600:#a9803c;--gold-700:#7d5a1e;
   --cream:#fffaf1;--paper:#f7eedd;--line:#e8d8bc;
   --ink:#2c1020;--ink-soft:#6e5560;
-  --serif:"Noto Serif Devanagari",serif;--sans:"Noto Sans Devanagari",system-ui,sans-serif;
+  --serif:"Noto Serif Devanagari",serif;--sans:"Noto Sans Devanagari","Kohinoor Devanagari","Nirmala UI","Mangal",system-ui,sans-serif;
   --gutter:20px;--radius:14px;
   --focus:var(--gold-700);
 }
