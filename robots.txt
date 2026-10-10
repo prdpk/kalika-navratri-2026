@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prdpk.github.io/kalika-navratri-2026/sitemap.xml
