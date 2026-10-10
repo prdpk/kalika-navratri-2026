@@ -2,12 +2,14 @@ const days = FESTIVAL_DAYS;
 const PENDING = "मानकऱ्यांची नावे लवकरच जाहीर होतील";
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// Every मानकरी is shown as "श्री. नाव" — normalises "श्री.नाव", "श्री नाव" or a missing prefix.
+const withShri = name => "श्री. " + String(name).trim().replace(/^श्री\.?\s*/, "");
 
 function namesHTML(list){
  if(!list.length) return `<p class="names-pending">${PENDING}</p>`;
  return `<ol class="names">${list.map(p=>{
   const [name,role] = Array.isArray(p) ? p : [p];
-  return `<li><span>${esc(name)}</span>${role ? `<em>${esc(role)}</em>` : ""}</li>`;
+  return `<li><span>${esc(withShri(name))}</span>${role ? `<em>${esc(role)}</em>` : ""}</li>`;
  }).join("")}</ol>`;
 }
 
