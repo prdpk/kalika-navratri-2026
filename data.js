@@ -1,5 +1,5 @@
 // Festival content — edit names and activities here; script.js only renders it.
-// icon: activity icon id from index.html (lemon, chair, dandiya, dance, glass, essay, saree)
+// icon: colour illustration id from art.js (lemon, chair, dandiya, dance, glass, essay, saree)
 // aarti: आरतीचे मानकरी — each entry is one of:
 //   "नाव"                         → shown as "श्री. नाव"
 //   ["नाव", "पद / ठिकाण"]          → second part shown as a smaller line under the name

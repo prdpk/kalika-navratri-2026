@@ -2,7 +2,6 @@ const days = FESTIVAL_DAYS;
 const PENDING = "मानकऱ्यांची नावे लवकरच जाहीर होतील";
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const iconSVG = (id, cls = "") => `<svg class="i${cls ? " " + cls : ""}" aria-hidden="true" focusable="false"><use href="#i-${id}"/></svg>`;
 // Every मानकरी is shown as "श्री. नाव" — normalises "श्री.नाव", "श्री नाव" or a missing prefix.
 const withShri = name => "श्री. " + String(name).trim().replace(/^श्री\.?\s*/, "");
 
@@ -14,6 +13,9 @@ function namesHTML(list){
  }).join("")}</ol>`;
 }
 
+/* ---------- Colour illustrations in static slots ---------- */
+document.querySelectorAll(".art-slot").forEach(slot=>{ slot.outerHTML = art(slot.dataset.art); });
+
 /* ---------- Nine-day schedule ---------- */
 let selected = 0;
 const list = $("dayList"), dots = $("dots"), detail = $("dayDetail");
@@ -21,7 +23,7 @@ const cards = days.map((day,index)=>{
  const button = document.createElement("button");
  button.type = "button";
  button.className = "day-card";
- button.innerHTML = `<span class="day-icon">${iconSVG(day.icon)}</span><span class="day-meta">माळ ${day.number}</span><span class="day-name">${esc(day.name)}</span><span class="day-group"><span class="sr-only">, </span>${esc(day.group)}</span>`;
+ button.innerHTML = `<span class="day-icon">${art(day.icon)}</span><span class="day-meta">माळ ${day.number}</span><span class="day-name">${esc(day.name)}</span><span class="day-group"><span class="sr-only">, </span>${esc(day.group)}</span>`;
  button.addEventListener("click",()=>{ selectDay(index); revealDetail(); });
  list.appendChild(button);
  return button;
@@ -32,7 +34,7 @@ function selectDay(index){
  selected = Math.max(0, Math.min(days.length-1, index));
  const day = days[selected];
  $("detailNumber").textContent = "माळ " + day.number;
- $("detailIcon").setAttribute("href", "#i-" + day.icon);
+ $("detailArt").innerHTML = art(day.icon);
  $("detailTitle").textContent = day.name;
  $("detailGroup").textContent = day.group;
  $("detailAarti").innerHTML = namesHTML(day.aarti);
@@ -66,7 +68,7 @@ detail.addEventListener("touchend",e=>{
 const mankariGrid = $("mankariGrid");
 mankariGrid.innerHTML = days.map(day=>`
  <details class="mankari-card${day.aarti.length ? "" : " is-pending"}">
-  <summary><span class="day-icon">${iconSVG(day.icon)}</span><div><h3>माळ ${day.number}</h3><p>${esc(day.name)}${day.aarti.length ? ` · ${day.aarti.length.toLocaleString("mr-IN")} मानकरी` : ""}</p></div><svg class="i chev" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary>
+  <summary><span class="day-icon">${art(day.icon)}</span><div><h3>माळ ${day.number}</h3><p>${esc(day.name)}${day.aarti.length ? ` · ${day.aarti.length.toLocaleString("mr-IN")} मानकरी` : ""}</p></div><svg class="i chev" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary>
   ${namesHTML(day.aarti)}
  </details>`).join("");
 const mankariCards = [...mankariGrid.querySelectorAll("details")];
@@ -75,6 +77,11 @@ function syncMankari(){ mankariCards.forEach(card=>{ card.open = wide.matches; }
 syncMankari();
 wide.addEventListener("change", syncMankari);
 mankariCards.forEach(card=>card.querySelector("summary").addEventListener("click",e=>{ if(wide.matches) e.preventDefault(); }));
+
+/* ---------- Header lifts off the page once scrolled ---------- */
+const topbar = document.querySelector(".topbar");
+const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 8);
+window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 
 /* ---------- Mobile menu ---------- */
 const nav = $("nav"), menuToggle = $("menuToggle");
