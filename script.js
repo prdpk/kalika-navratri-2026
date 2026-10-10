@@ -35,12 +35,15 @@ function selectDay(index){
  $("detailTitle").textContent = day.name;
  $("detailGroup").textContent = day.group;
  $("detailAarti").innerHTML = namesHTML(day.aarti);
+ replay(detail.querySelector(".detail-head")); replay($("detailAarti"));
  $("detailProgress").textContent = day.number + " / ९";
  $("prevDay").disabled = selected === 0;
  $("nextDay").disabled = selected === days.length-1;
  cards.forEach((card,i)=>{ card.classList.toggle("active", i===selected); card.setAttribute("aria-pressed", String(i===selected)); });
  dotEls.forEach((dot,i)=>dot.classList.toggle("on", i===selected));
 }
+// Restart the short fade used when the selected day changes.
+function replay(el){ el.classList.remove("swap"); void el.offsetWidth; el.classList.add("swap"); }
 // On single-column layouts the detail card sits below the grid, so bring it into view after a tap.
 function revealDetail(){
  if(!window.matchMedia("(max-width: 860px)").matches) return;
@@ -58,11 +61,19 @@ detail.addEventListener("touchend",e=>{
 });
 
 /* ---------- आरतीचे मानकरी (all days) ---------- */
-$("mankariGrid").innerHTML = days.map(day=>`
- <article class="mankari-card${day.aarti.length ? "" : " is-pending"}">
-  <header><span class="day-num" aria-hidden="true">${day.number}</span><div><h3>माळ ${day.number}</h3><p>${esc(day.name)}</p></div></header>
+// Collapsible on phones (one माळ at a time), always open from tablet width up.
+const mankariGrid = $("mankariGrid");
+mankariGrid.innerHTML = days.map(day=>`
+ <details class="mankari-card${day.aarti.length ? "" : " is-pending"}">
+  <summary><span class="day-num" aria-hidden="true">${day.number}</span><div><h3>माळ ${day.number}</h3><p>${esc(day.name)}${day.aarti.length ? ` · ${day.aarti.length.toLocaleString("mr-IN")} मानकरी` : ""}</p></div><svg class="i chev" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></summary>
   ${namesHTML(day.aarti)}
- </article>`).join("");
+ </details>`).join("");
+const mankariCards = [...mankariGrid.querySelectorAll("details")];
+const wide = window.matchMedia("(min-width: 768px)");
+function syncMankari(){ mankariCards.forEach(card=>{ card.open = wide.matches; }); }
+syncMankari();
+wide.addEventListener("change", syncMankari);
+mankariCards.forEach(card=>card.querySelector("summary").addEventListener("click",e=>{ if(wide.matches) e.preventDefault(); }));
 
 /* ---------- Mobile menu ---------- */
 const nav = $("nav"), menuToggle = $("menuToggle");
@@ -95,4 +106,15 @@ function fallbackCopy(){
 }
 ["shareTop","shareHero","shareBottom"].forEach(id=>$(id).addEventListener("click",shareInvite));
 
+/* ---------- Reveal sections on scroll ---------- */
+if("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+ const io = new IntersectionObserver(entries=>entries.forEach(entry=>{
+  if(entry.isIntersecting){ entry.target.classList.add("in"); io.unobserve(entry.target); }
+ }),{rootMargin:"0px 0px -8% 0px"});
+ document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+ window.addEventListener("beforeprint",()=>document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in")));
+}else document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
+
 selectDay(0);
+// The first render shouldn't play the "day changed" fade.
+document.querySelectorAll(".swap").forEach(el=>el.classList.remove("swap"));
