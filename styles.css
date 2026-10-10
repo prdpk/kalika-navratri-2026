@@ -127,9 +127,10 @@ h1,h2,h3,h4{font-family:var(--serif);margin:0}
 
 /* Aarti mankari — shared name list */
 .names{list-style:none;margin:0;padding:0;counter-reset:n;display:grid}
-.names li{counter-increment:n;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding:7px 0 7px 34px;position:relative;font-size:15.5px;line-height:1.45;font-weight:500}
+.names li{counter-increment:n;display:flex;flex-direction:column;gap:1px;padding:7px 0 7px 34px;position:relative;font-size:15.5px;line-height:1.45;font-weight:500}
 .names li::before{content:counter(n,devanagari);position:absolute;left:0;top:7px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;font-size:12px;font-weight:700;line-height:1}
-.names em{font-style:normal;font-size:12px;font-weight:600;padding:1px 9px;border-radius:999px;line-height:1.6}
+/* पद / ठिकाण — a quieter second line under the name, so long descriptions wrap cleanly */
+.names em{font-style:normal;font-size:13px;font-weight:500;line-height:1.45}
 .names-pending{margin:0;font-size:14px;font-style:italic}
 
 /* Aarti mankari — inside the dark detail card */
@@ -139,7 +140,7 @@ h1,h2,h3,h4{font-family:var(--serif);margin:0}
 .detail-aarti .names li{color:#fff1d6}
 .detail-aarti .names li+li{border-top:1px dashed rgba(214,178,104,.18)}
 .detail-aarti .names li::before{background:rgba(214,178,104,.18);color:var(--gold-200)}
-.detail-aarti .names em{background:rgba(214,178,104,.18);color:var(--gold-200)}
+.detail-aarti .names em{color:#d9bd84}
 .detail-aarti .names-pending{padding:4px 0 6px;color:#e2cfb8}
 
 /* Aarti mankari — all-days section */
@@ -152,7 +153,7 @@ h1,h2,h3,h4{font-family:var(--serif);margin:0}
 .mankari-card .names li{color:var(--ink)}
 .mankari-card .names li+li{border-top:1px dashed #eadcc3}
 .mankari-card .names li::before{background:#f6ead0;color:var(--gold-700)}
-.mankari-card .names em{background:#3a1226;color:var(--gold-200)}
+.mankari-card .names em{color:var(--gold-700)}
 .mankari-card .names-pending{padding:10px 0 8px;color:var(--ink-soft)}
 .mankari-card.is-pending{background:#fffdf8;border-style:dashed}
 

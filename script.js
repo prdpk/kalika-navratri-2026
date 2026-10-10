@@ -8,8 +8,8 @@ const withShri = name => "श्री. " + String(name).trim().replace(/^श्
 function namesHTML(list){
  if(!list.length) return `<p class="names-pending">${PENDING}</p>`;
  return `<ol class="names">${list.map(p=>{
-  const [name,role] = Array.isArray(p) ? p : [p];
-  return `<li><span>${esc(withShri(name))}</span>${role ? `<em>${esc(role)}</em>` : ""}</li>`;
+  const {name, role, noPrefix} = Array.isArray(p) ? {name:p[0], role:p[1]} : typeof p === "object" ? p : {name:p};
+  return `<li><span>${esc(noPrefix ? name : withShri(name))}</span>${role ? `<em>${esc(role)}</em>` : ""}</li>`;
  }).join("")}</ol>`;
 }
 
