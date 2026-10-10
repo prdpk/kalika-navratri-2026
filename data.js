@@ -1,4 +1,5 @@
 // Festival content — edit names and activities here; script.js only renders it.
+// icon: activity icon id from index.html (lemon, chair, dandiya, dance, glass, essay, saree)
 // aarti: आरतीचे मानकरी — each entry is one of:
 //   "नाव"                         → shown as "श्री. नाव"
 //   ["नाव", "पद / ठिकाण"]          → second part shown as a smaller line under the name
@@ -7,7 +8,7 @@
 
 const FESTIVAL_DAYS = [
   {
-    number: "१", name: "लिंबू-चमचा व फुगे खेळ", group: "लहान गट (मुले / मुली)",
+    number: "१", name: "लिंबू-चमचा व फुगे खेळ", group: "लहान गट (मुले / मुली)", icon: "lemon",
     aarti: [
       "श्री. अशोक जिरेकर (सर)",
       "श्री. शहाजी चव्हाण (सर)",
@@ -18,7 +19,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "२", name: "संगीत खुर्ची", group: "लहान गट (मुले / मुली)",
+    number: "२", name: "संगीत खुर्ची", group: "लहान गट (मुले / मुली)", icon: "chair",
     aarti: [
       "श्री. माऊलीशेठ लवांडे",
       "श्री. अमोल हजारे",
@@ -30,7 +31,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "३", name: "दांडिया", group: "ज्येष्ठ गट महिला",
+    number: "३", name: "दांडिया", group: "ज्येष्ठ गट महिला", icon: "dandiya",
     aarti: [
       "श्री. अतुलशेठ कांकरीया",
       "श्री. अमितशेठ बोरा",
@@ -41,7 +42,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "४", name: "संगीत खुर्ची", group: "ज्येष्ठ गट महिला",
+    number: "४", name: "संगीत खुर्ची", group: "ज्येष्ठ गट महिला", icon: "chair",
     aarti: [
       "श्री. विजयसिंह (बाळा) बांगर",
       "श्री. संतोषदादा जाधव",
@@ -51,7 +52,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "५", name: "नृत्य स्पर्धा", group: "लहान गट (मुले / मुली)",
+    number: "५", name: "नृत्य स्पर्धा", group: "लहान गट (मुले / मुली)", icon: "dance",
     aarti: [
       ["श्री. अमितशेठ चिंतामणी", "नगराध्यक्ष, जामखेड"],
       ["श्री. गणेशशेठ बेद्रे", "सराफ स्वर्णकार संघटना अध्यक्ष"],
@@ -63,7 +64,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "६", name: "दांडिया", group: "लहान गट (मुले / मुली)",
+    number: "६", name: "दांडिया", group: "लहान गट (मुले / मुली)", icon: "dandiya",
     aarti: [
       "श्री. दर्शनशेठ कांकरीया",
       "श्री. महेंद्र साहेब गर्जे",
@@ -75,7 +76,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "७", name: "ग्लास गेम", group: "ज्येष्ठ गट पुरुष",
+    number: "७", name: "ग्लास गेम", group: "ज्येष्ठ गट पुरुष", icon: "glass",
     aarti: [
       "श्री. राहुलशेठ पवने",
       "श्री. कल्याण पोकळे (डॉक्टर)",
@@ -87,7 +88,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "८", name: "निबंध लेखन स्पर्धा", group: "लहान गट (मुले / मुली)",
+    number: "८", name: "निबंध लेखन स्पर्धा", group: "लहान गट (मुले / मुली)", icon: "essay",
     aarti: [
       "श्री. महादेवनाना जाधव",
       "श्री. गणेशशेठ शिंदे",
@@ -98,7 +99,7 @@ const FESTIVAL_DAYS = [
     ]
   },
   {
-    number: "९", name: "खेळ पैठणी", group: "ज्येष्ठ गट महिला",
+    number: "९", name: "खेळ पैठणी", group: "ज्येष्ठ गट महिला", icon: "saree",
     aarti: [
       ["श्री. कालिका देवी मंदिर प्रतिष्ठान", "पाटोदा"],
       { name: "सर्व कालिका भक्तगण", noPrefix: true }

@@ -49,6 +49,15 @@
       <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
       <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
       <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <!-- Activity icons (same 24px line style as above) -->
+      <symbol id="i-lemon" viewBox="0 0 24 24"><path d="M3 21l7.6-7.6"/><ellipse cx="15" cy="9" rx="6" ry="4.2" transform="rotate(-45 15 9)"/><ellipse cx="15" cy="9" rx="3.1" ry="2.3" transform="rotate(-45 15 9)" fill="currentColor" fill-opacity=".28"/><path d="M14 7.9l2-2"/></symbol>
+      <symbol id="i-chair" viewBox="0 0 24 24"><path d="M5 21V4.5A1.5 1.5 0 0 1 6.5 3h3A1.5 1.5 0 0 1 11 4.5V12"/><path d="M5 12h9.5a1 1 0 0 1 1 1v1H5"/><path d="M14.5 14v7M6.5 14v7"/><path d="M7.5 6.5h1M7.5 9h1"/><path d="M17 8.5V3l4-1v5"/><circle cx="15.8" cy="8.6" r="1.3"/><circle cx="19.8" cy="7.2" r="1.3"/></symbol>
+      <symbol id="i-dandiya" viewBox="0 0 24 24"><path d="M5.5 19.5 18 5"/><path d="M18.5 19.5 6 5"/><path d="M8.6 15.4l1.6 1.4M15.4 15.4l-1.6 1.4"/><circle cx="18.5" cy="4.5" r="1.4"/><circle cx="5.5" cy="4.5" r="1.4"/><path d="M4 21h3M17 21h3"/></symbol>
+      <symbol id="i-dance" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M12 6.5v4.5"/><path d="M6.5 6.5 12 9.5l5.5-4"/><path d="M9.5 11h5l3.5 7H6z"/><path d="M10 18l-1.2 3.5M14 18l1.2 3.5"/></symbol>
+      <symbol id="i-glass" viewBox="0 0 24 24"><path d="M5.5 3h13l-1.6 16.6A1.6 1.6 0 0 1 15.3 21H8.7a1.6 1.6 0 0 1-1.6-1.4z"/><path d="M6.3 10h11.4"/><circle cx="11" cy="14" r=".8" fill="currentColor"/><circle cx="13.5" cy="16.5" r=".8" fill="currentColor"/></symbol>
+      <symbol id="i-essay" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M8.5 12.5h7M8.5 16h4"/><path d="m21 11-5.5 5.5-2 .5.5-2L19.5 9.5z"/></symbol>
+      <symbol id="i-saree" viewBox="0 0 24 24"><path d="M3.5 5.5h17v13h-17z"/><path d="M3.5 14.5h17"/><path d="M3.5 18.5l2-2.2 2 2.2 2-2.2 2 2.2 2-2.2 2 2.2 2-2.2 2 2.2 1-1.1"/><path d="M12 7.5c1.6 1 1.6 3.2 0 4.4-1.6-1.2-1.6-3.4 0-4.4z"/></symbol>
+      <symbol id="i-diya" viewBox="0 0 24 24"><path d="M2.5 13.5h19c-.4 3.6-4.6 5.5-9.5 5.5s-9.1-1.9-9.5-5.5z"/><path d="M12 12c-1.9-1.5-2-3.6 0-6.5 2 2.9 1.9 5 0 6.5z"/><path d="M9 19l-1 2h8l-1-2"/></symbol>
     </defs>
   </svg>
 
@@ -72,6 +81,7 @@
 
   <main id="main">
     <section class="hero" id="home" aria-label="स्वागत">
+      <div class="toran" aria-hidden="true"></div>
       <div class="hero-backdrop" aria-hidden="true"></div>
       <div class="hero-inner">
         <figure class="hero-art">
@@ -130,7 +140,7 @@
             <span class="detail-progress" id="detailProgress">१ / ९</span>
           </div>
           <div class="detail-head" aria-live="polite">
-            <div class="medallion" aria-hidden="true"><span id="detailNumeral">१</span></div>
+            <div class="medallion" aria-hidden="true"><svg class="i" focusable="false"><use id="detailIcon" href="#i-lemon"/></svg></div>
             <div>
               <p class="detail-label">या माळेचा विशेष उपक्रम</p>
               <h3 id="detailTitle">लिंबू-चमचा व फुगे खेळ</h3>
@@ -138,7 +148,7 @@
             </div>
           </div>
           <div class="detail-aarti">
-            <h4 class="aarti-title"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg> आरतीचे मानकरी</h4>
+            <h4 class="aarti-title"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-diya"/></svg> आरतीचे मानकरी</h4>
             <div id="detailAarti"></div>
           </div>
           <div class="detail-controls">
@@ -154,7 +164,7 @@
     <section class="mankari" id="mankari" aria-labelledby="mankari-title">
       <div class="section-wrap">
         <div class="section-heading reveal">
-          <p class="eyebrow">माळ निहाय · आरती</p>
+          <p class="eyebrow eyebrow-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-diya"/></svg> माळ निहाय · आरती</p>
           <h2 id="mankari-title">आरतीचे <em>मानकरी</em></h2>
           <p>प्रत्येक माळेच्या आरतीचा मान लाभलेल्या मान्यवरांची नावे.</p>
         </div>
@@ -163,6 +173,7 @@
     </section>
 
     <section class="details" id="details" aria-labelledby="details-title">
+      <div class="toran" aria-hidden="true"></div>
       <div class="section-wrap">
         <div class="section-heading on-dark reveal">
           <p class="eyebrow">आपल्या भेटीचे नियोजन</p>
