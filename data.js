@@ -2,7 +2,7 @@
 // icon: colour illustration id from art.js (lemon, chair, dandiya, dance, glass, essay, saree)
 // aarti: आरतीचे मानकरी — each entry is one of:
 //   "नाव"                         → shown as "श्री. नाव"
-//   ["नाव", "पद / ठिकाण"]          → second part shown as a smaller line under the name
+//   ["नाव", "पद / ठिकाण"]          → second part shown as a smaller line under the name (\n for more lines)
 //   {name: "…", noPrefix: true}   → shown exactly as written, without "श्री." (e.g. सर्व भक्तगण)
 // "श्री. " is added automatically when missing. Leave the list empty until names are confirmed.
 
@@ -101,8 +101,7 @@ const FESTIVAL_DAYS = [
   {
     number: "९", name: "खेळ पैठणी", group: "ज्येष्ठ गट महिला", icon: "saree",
     aarti: [
-      ["श्री. कालिका देवी मंदिर प्रतिष्ठान", "पाटोदा"],
-      { name: "सर्व कालिका भक्तगण", noPrefix: true }
+      ["श्री. कालिका देवी मंदिर प्रतिष्ठान", "सर्व कालिका भक्तगण\nपाटोदा"]
     ]
   }
 ];

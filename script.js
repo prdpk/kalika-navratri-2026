@@ -9,7 +9,7 @@ function namesHTML(list){
  if(!list.length) return `<p class="names-pending">${PENDING}</p>`;
  return `<ol class="names">${list.map(p=>{
   const {name, role, noPrefix} = Array.isArray(p) ? {name:p[0], role:p[1]} : typeof p === "object" ? p : {name:p};
-  return `<li><span>${esc(noPrefix ? name : withShri(name))}</span>${role ? `<em>${esc(role)}</em>` : ""}</li>`;
+  return `<li><span>${esc(noPrefix ? name : withShri(name))}</span>${role ? `<em>${esc(role).replace(/\n/g, "<br>")}</em>` : ""}</li>`;
  }).join("")}</ol>`;
 }
 
