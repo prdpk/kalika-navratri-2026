@@ -2,9 +2,9 @@
 
 श्री. कालिका देवी नवरात्र उत्सव मंडळ, पाटोदा यांच्यासाठी तयार केलेली मराठी, मोबाईलवर वापरण्यास सोपी स्थिर (static) वेबसाइट.
 
-**Live (मुख्य लिंक):** https://kalika-devi-patoda.web.app/
+**Live:** https://kalika-devi-patoda.web.app/ (Firebase Hosting)
 
-**Backup (GitHub Pages):** https://prdpk.github.io/kalika-navratri-2026/
+GitHub repository फक्त कोडचा backup आहे; GitHub Pages वेबसाइट बंद केली आहे.
 
 ## यात काय आहे?
 - कालिका देवीच्या छायाचित्रासह स्वागत पृष्ठ (मोबाईलवर पूर्ण रुंदीत, फोटो कापला जात नाही)
@@ -36,19 +36,17 @@ python3 -m http.server 8000
 आणि ब्राउझरमध्ये `http://localhost:8000` उघडा. (जुने पान दिसत असल्यास Cmd/Ctrl + Shift + R दाबा.)
 
 ## प्रकाशित (deploy) करण्यासाठी
-वेबसाइट दोन ठिकाणी आहे — **Firebase (मुख्य)** आणि **GitHub Pages (backup)**. बदल केल्यानंतर या फोल्डरमध्ये:
+वेबसाइट फक्त **Firebase Hosting** वर आहे (प्रकल्प: `kalika-devi-patoda`, `.firebaserc` मध्ये). बदल केल्यानंतर या फोल्डरमध्ये:
 ```
-git add -A && git commit -m "Update" && git push
 firebase deploy --only hosting
 ```
-- `git push` — GitHub वर `main` व `gh-pages` दोन्ही अपडेट करतो (backup लिंक १–२ मिनिटांत अपडेट).
-- `firebase deploy` — मुख्य लिंक https://kalika-devi-patoda.web.app/ लगेच अपडेट करतो (Firebase प्रकल्प: `kalika-devi-patoda`, `.firebaserc` मध्ये).
+https://kalika-devi-patoda.web.app/ लगेच अपडेट होते.
 
-नवीन संगणकावर clone केल्यास हे एकदा चालवा, म्हणजे `git push` दोन्ही branches अपडेट करेल:
+कोडचा backup GitHub वर ठेवण्यासाठी:
 ```
-git config --add remote.origin.push refs/heads/main:refs/heads/main
-git config --add remote.origin.push refs/heads/main:refs/heads/gh-pages
+git add -A && git commit -m "Update" && git push
 ```
+
 Firebase साठी एकदा `npm install -g firebase-tools` व `firebase login` आवश्यक.
 
 ## प्रकाशित करण्यापूर्वी तपासा
